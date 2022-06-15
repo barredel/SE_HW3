@@ -1,6 +1,8 @@
-public  class ArrayQueue<E extends Cloneable>  implements Queue
+import java.util.Iterator;
+
+public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, Iterable<E>
 {
-    private E array[];
+    private E[] array;
     private int maxSize;
     private int size;
     private int head;
@@ -59,9 +61,23 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue
     }
 
     @Override
-    public Queue<E> clone()
+    public Iterator<E> iterator() {
+        return new ;
+    }
+
+    @Override
+    public ArrayQueue<E> clone()
     {
-        return null;
+        try{
+            ArrayQueue<E> copy = (ArrayQueue<E>)super.clone();
+            for(int i = 0; i<this.maxSize; i++)
+            {
+                copy.array[i] = this.array[i].clone();
+            }
+            return copy;
+        }catch(CloneNotSupportedException e){
+            return null;
+        }
     }
 }
 
