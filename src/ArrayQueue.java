@@ -1,3 +1,5 @@
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Iterator;
 
 public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, Iterable<E>
@@ -82,13 +84,22 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
     {
         try{
             ArrayQueue<E> copy = (ArrayQueue<E>)super.clone();
+            Class meta = array[1].getClass();
+            Method m = meta.getMethod("clone");
             copy.array = (E[]) new Cloneable[maxSize];
             for(int i = 0; i<this.maxSize; i++)
             {
-                copy.array[i] = this.array[i].clone();
+                copy.array[i] = (E)m.invoke(this.array[i]);
+
             }
             return copy;
         }catch(CloneNotSupportedException e){
+            return null;
+        } catch (NoSuchMethodException e) {
+            return null;
+        } catch (InvocationTargetException e) {
+            return null;
+        } catch (IllegalAccessException e) {
             return null;
         }
     }
