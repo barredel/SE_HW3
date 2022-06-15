@@ -60,9 +60,21 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
         return false;
     }
 
+    public E[] getArray() {
+        return array;
+    }
+
+    public int getTail() {
+        return tail;
+    }
+
+    public int getMaxSize() {
+        return maxSize;
+    }
+
     @Override
     public Iterator<E> iterator() {
-        return new ;
+        return new ArrayQueueIterator<E>(head, this);
     }
 
     @Override
@@ -70,6 +82,7 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
     {
         try{
             ArrayQueue<E> copy = (ArrayQueue<E>)super.clone();
+            copy.array = (E[]) new Cloneable[maxSize];
             for(int i = 0; i<this.maxSize; i++)
             {
                 copy.array[i] = this.array[i].clone();
