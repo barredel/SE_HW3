@@ -192,7 +192,7 @@ public class Main {
             System.out.println("Cannot add the task!");
         }
         Task clonedT1 = t1.clone();
-        try {
+//        try {
             l1.addTask(clonedT1);
         } catch (TaskAlreadyExistsException e) {
             System.out.println("Cannot add the task!");
