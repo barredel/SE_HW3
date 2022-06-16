@@ -109,13 +109,7 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
 
             }
             return copy;
-        }catch(CloneNotSupportedException e){
-            return null;
-        } catch (NoSuchMethodException e) {
-            return null;
-        } catch (InvocationTargetException e) {
-            return null;
-        } catch (IllegalAccessException e) {
+        }catch(Exception e) {
             return null;
         }
     }
