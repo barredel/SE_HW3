@@ -34,7 +34,7 @@ class MyCloneable implements Cloneable {
 public class Main {
     public static void main(String[] args) {
         testPartA();
-        //testPartB();
+        testPartB();
     }
 
     /**
@@ -144,7 +144,7 @@ public class Main {
     /**
      * Tests for part B.
      */
-    /*
+
     private static void testPartB() {
         ToDoList l1 = new ToDoList();
         for (Task t : l1) {
@@ -240,12 +240,12 @@ public class Main {
         checkScans(l3, dates);
 
         System.out.println("\nTesting of part B is over!");
-    }*/
+    }
 
     /**
      * Checks all of the scan types for a given ToDoList using different dates.
      */
-    /*
+
     private static void checkScans(ToDoList tdl, Date[] dates) {
         System.out.println("Starts scanning...");
         for (Task t : tdl) {
@@ -267,5 +267,5 @@ public class Main {
         }
 
         System.out.println("Done scanning");
-    }*/
+    }
 }
