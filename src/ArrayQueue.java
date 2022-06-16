@@ -12,6 +12,10 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
 
     public ArrayQueue(int maxSize)
     {//to do: if maxsize<0 throws exception
+        if(maxSize < 0)
+        {
+            throw new NegativeCapacityException("negative capacity");
+        }
         this.size = 0;
         this.head = 0;
         this.tail = 0;
@@ -23,6 +27,10 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
     @Override
     public void enqueue(E element)
     {//to do: if size==maxsize throws exception
+        if(this.size==maxSize)
+        {
+            throw new QueueOverflowException("The queue reached its full capacity");
+        }
         this.tail = (this.tail+1) % this.maxSize;
         this.array[this.tail] = element;
         this.size++;
@@ -32,6 +40,10 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
     @Override
     public E dequeue ()
     {//to do: if size==0 throws exception
+        if(isEmpty())
+        {
+            throw new EmptyQueueException("The queue is empty");
+        }
         E temp = this.array[head];
         this.array[head] = null;
         this.head = (this.head+1) % this.maxSize;
@@ -43,6 +55,10 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
     @Override
     public E peek()
     {//to do: if size==0 throws exception
+        if(isEmpty())
+        {
+            throw new EmptyQueueException("The queue is empty");
+        }
         return this.array[head];
     }
 
