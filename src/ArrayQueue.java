@@ -105,6 +105,7 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
             copy.array = (E[]) new Cloneable[maxSize];
             for(int i = 0; i<this.maxSize; i++)
             {
+                if (this.array[i] !=null)
                 copy.array[i] = (E)m.invoke(this.array[i]);
 
             }
