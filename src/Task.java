@@ -1,10 +1,17 @@
+import java.util.Date;
 public class Task implements Cloneable
 {
     private String description;
-    private int day;
-    private int month;
-    private int year;
+    private Date date;
 
+    public Task(String description,Date date)
+    {
+        this.description = description;
+        this.date = date;
+    }
 
-
+    public Date getDate()
+    {
+        return date;
+    }
 }
