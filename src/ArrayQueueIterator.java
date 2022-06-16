@@ -13,7 +13,7 @@ public class ArrayQueueIterator<E extends Cloneable> implements Iterator<E>
 
     @Override
     public boolean hasNext() {
-        if (index == -1){
+        if ((index == -2) || (queue.getArray()[index] == null)){
             return false;
         }
         return true;
@@ -24,7 +24,7 @@ public class ArrayQueueIterator<E extends Cloneable> implements Iterator<E>
         E element = queue.getArray()[index];
         if (index == queue.getTail())
         {
-            index = -1;
+            index = -2;
         }
         else{
             index = (index+1)% queue.getMaxSize();

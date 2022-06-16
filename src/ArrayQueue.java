@@ -18,7 +18,7 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
         }
         this.size = 0;
         this.head = 0;
-        this.tail = 0;
+        this.tail = -1;
         this.maxSize = maxSize;
         this.array = (E[]) new Cloneable[maxSize];
     }
