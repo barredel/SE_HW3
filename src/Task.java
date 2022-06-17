@@ -16,7 +16,6 @@ public class Task implements Cloneable
     }
 
     @Override
-
     public boolean equals(Object other)
     {
         if (!(other instanceof Task))
