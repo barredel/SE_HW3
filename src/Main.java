@@ -120,6 +120,7 @@ public class Main {
         } catch (QueueException e) {
             System.out.println("The queue reached its full capacity.");
         }
+
         System.out.println("\nTesting of part A is over!\n\n");
 
     }
@@ -192,7 +193,7 @@ public class Main {
             System.out.println("Cannot add the task!");
         }
         Task clonedT1 = t1.clone();
-//        try {
+        try {
             l1.addTask(clonedT1);
         } catch (TaskAlreadyExistsException e) {
             System.out.println("Cannot add the task!");

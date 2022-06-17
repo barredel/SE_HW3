@@ -10,9 +10,23 @@ public class Task implements Cloneable
         this.date = date;
     }
 
+    public void setDueDate(Date date) {
+        this.date = date;
+    }
+
     public Date getDate()
     {
         return date;
+    }
+
+    public Date getDueDate()
+    {
+        return this.date;
+    }
+
+    public String getDescription()
+    {
+        return this.description;
     }
 
     @Override
@@ -40,7 +54,7 @@ public class Task implements Cloneable
         }
         else
         {
-            string = string + "." + date.getDate();
+            string = string + date.getDate();
         }
         if(date.getMonth() <9)
         {
