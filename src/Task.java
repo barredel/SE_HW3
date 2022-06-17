@@ -15,6 +15,11 @@ public class Task implements Cloneable
         return date;
     }
 
+    public String getDescription()
+    {
+        return this.description;
+    }
+
     @Override
 
     public boolean equals(Object other)

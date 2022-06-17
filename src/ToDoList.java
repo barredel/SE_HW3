@@ -23,7 +23,43 @@ public class ToDoList implements TaskIterable , Cloneable
 
     public void addTask(Task task)
     {
+        tasks.add(task);
+        for(int i = 0; i<=tasksSorted.size(); i++)
+        {
+            if(i==tasksSorted.size())
+            {
+                tasksSorted.add(task);
+                return;
+            }
+            if(tasksSorted.get(i).getDescription().equals(task.getDescription()))
+            {
+                throw new TaskAlreadyExistsException ();
+            }
+            if(tasksSorted.get(i).getDate().compareTo(task.getDate()) < 0)
+            {
+                continue;
+            }
+            else if(tasksSorted.get(i).getDate().compareTo(task.getDate()) > 0)
+            {
+                tasksSorted.add(i, task);
+                return;
+            }
+            else if(tasksSorted.get(i).getDate().compareTo(task.getDate()) == 0)
+                if(tasksSorted.get(i).getDescription().compareTo(task.getDescription()) < 0)
+                {
+                    continue;
+                }
+                else if(tasksSorted.get(i).getDescription().compareTo(task.getDescription()) > 0)
+                {
+                    tasksSorted.add(i, task);
+                    return;
+                }
 
+
+
+
+
+        }
     }
     public Iterator <Task> iterator()
     {
