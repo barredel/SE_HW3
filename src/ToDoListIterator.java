@@ -18,6 +18,10 @@ public class ToDoListIterator implements Iterator <Task>
         @Override
         public boolean hasNext()
         {
+                if (index==tasksSorted.size())
+                {
+                        return false;
+                }
                 if(tasksSorted.get(index)==null)
                 {
                         return false;

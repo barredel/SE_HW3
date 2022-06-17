@@ -33,7 +33,7 @@ public class ToDoList implements TaskIterable , Cloneable
             }
             if(tasksSorted.get(i).getDescription().equals(task.getDescription()))
             {
-                throw new TaskAlreadyExistsException ();
+                throw new TaskAlreadyExistsException();
             }
             if(tasksSorted.get(i).getDate().compareTo(task.getDate()) < 0)
             {
@@ -54,11 +54,6 @@ public class ToDoList implements TaskIterable , Cloneable
                     tasksSorted.add(i, task);
                     return;
                 }
-
-
-
-
-
         }
     }
     public Iterator <Task> iterator()
@@ -67,7 +62,6 @@ public class ToDoList implements TaskIterable , Cloneable
     }
 
     @Override
-
     public boolean equals(Object other)
     {
 
@@ -76,8 +70,11 @@ public class ToDoList implements TaskIterable , Cloneable
             return false;
         }
         ToDoList otherToDoList = (ToDoList)other;
-        int maxSize = Math.max(this.tasksSorted.size(), otherToDoList.tasksSorted.size());
-        for(int i = 0; i < maxSize; i++)
+        if(this.tasksSorted.size() != otherToDoList.tasksSorted.size())
+        {
+            return false;
+        }
+        for(int i = 0; i < this.tasksSorted.size(); i++)
         {
             if (!((this.tasksSorted.get(i)).equals(otherToDoList.tasksSorted.get(i))))
             {
@@ -105,7 +102,6 @@ public class ToDoList implements TaskIterable , Cloneable
 
 
     @Override
-
     public int hashCode()
     {
         if((this.tasksSorted).size()==0)
@@ -123,7 +119,15 @@ public class ToDoList implements TaskIterable , Cloneable
     public ToDoList clone() {
         try {
             ToDoList copy = (ToDoList) super.clone();
-            copy.scanningDueDate = (Date)this.scanningDueDate.clone();
+            if(this.scanningDueDate != null)
+            {
+                copy.scanningDueDate = (Date)this.scanningDueDate.clone();
+
+            }
+            else
+            {
+                copy.scanningDueDate = null;
+            }
             copy.tasks = new ArrayList<Task>();
             copy.tasksSorted = new ArrayList<Task>();
             for(int i = 0; i<this.tasks.size(); i++)
