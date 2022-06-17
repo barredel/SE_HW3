@@ -16,8 +16,14 @@ public class Task implements Cloneable
     }
 
     @Override
-    public boolean equals(Task otherTask)
+
+    public boolean equals(Object other)
     {
+        if (!(other instanceof Task))
+        {
+            return false;
+        }
+        Task otherTask = (Task)other;
         if((this.description.equals(otherTask.description))&& (this.date.compareTo(otherTask.date)==0))
         {
             return true;
@@ -51,10 +57,27 @@ public class Task implements Cloneable
 
     @Override
 
-    public int hashcode()
+    public int hashCode()
     {
         return description.hashCode();
     }
+
+    @Override
+
+    public Task clone()
+    {
+        try
+        {
+            Task copy = (Task)super.clone();
+            copy.date = (Date)date.clone();
+            return copy;
+        } catch (Exception e)
+        {
+            return null;
+        }
+    }
+
+
 
 
 
