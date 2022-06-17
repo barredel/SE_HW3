@@ -94,7 +94,7 @@ public class ToDoList implements TaskIterable , Cloneable
             if (i == this.tasks.size() - 1) {
                 string = string + "(" + tasks.get(i).toString() + ")";
             } else {
-                string = string + "(" + tasks.get(i).toString() + "),";
+                string = string + "(" + tasks.get(i).toString() + "), ";
             }
         }
         return (string + "]");

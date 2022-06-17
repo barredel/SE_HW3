@@ -107,15 +107,12 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
             {
                 if (this.array[i] !=null)
                 copy.array[i] = (E)m.invoke(this.array[i]);
-
             }
             return copy;
         }catch(Exception e) {
             return null;
         }
     }
-
-
 }
 
 
