@@ -120,7 +120,6 @@ public class Main {
         } catch (QueueException e) {
             System.out.println("The queue reached its full capacity.");
         }
-
         System.out.println("\nTesting of part A is over!\n\n");
 
     }
