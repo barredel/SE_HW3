@@ -26,8 +26,8 @@ public class ToDoList implements TaskIterable , Cloneable
     }
 
     /**
-     * Gets the date used when going through a list
-     * chores. If the value of the transferred parameter is null, the transition to the tasks will be performed
+     * Gets the date used when going through a ToDoList
+     * If the value of the transferred parameter is null, the transition to the tasks will be performed
      * according to the first type of scan.
      * otherwise, this date is used as the date given in the second scan type.
      * @param scanningDueDate the date used when going through a list
