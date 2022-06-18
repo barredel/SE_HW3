@@ -69,14 +69,12 @@ public class Task implements Cloneable
     }
 
     @Override
-
     public int hashCode()
     {
         return description.hashCode();
     }
 
     @Override
-
     public Task clone()
     {
         try
