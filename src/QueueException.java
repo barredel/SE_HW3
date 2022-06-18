@@ -1,3 +1,6 @@
+/**
+ * an exception for any problem in ArrayQueues
+ */
 public class QueueException extends RuntimeException
 {
     public QueueException() {}
