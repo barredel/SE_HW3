@@ -42,9 +42,17 @@ public class ToDoList implements TaskIterable , Cloneable
      * and for tasksSorted put the task in the appropriate place by the due date so that the arraylist will be
      * sorted in ascending order by the tasks due date
      * @param task a new task to add to the ToDoList
+     * @throws TaskAlreadyExistsException if there is already a task with the same description
      */
     public void addTask(Task task)
     {
+        for(int i = 0; i<tasks.size(); i++)
+        {
+            if(tasks.get(i).getDescription().equals(task.getDescription()))
+            {
+                throw new TaskAlreadyExistsException();
+            }
+        }
         tasks.add(task);
         for(int i = 0; i<=tasksSorted.size(); i++)
         {
@@ -52,10 +60,6 @@ public class ToDoList implements TaskIterable , Cloneable
             {
                 tasksSorted.add(task);
                 return;
-            }
-            if(tasksSorted.get(i).getDescription().equals(task.getDescription()))
-            {
-                throw new TaskAlreadyExistsException();
             }
             if(tasksSorted.get(i).getDueDate().compareTo(task.getDueDate()) < 0)
             {

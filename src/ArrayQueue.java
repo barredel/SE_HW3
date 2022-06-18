@@ -16,6 +16,7 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
 
     /**
      * @param maxSize - the max number of elements the queue can have
+     * @throws NegativeCapacityException if max size is negative
      */
     public ArrayQueue(int maxSize)
     {
@@ -34,6 +35,7 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
     /**
      * adds an element to the rear of the queue and updates the queue accordingly
      * @param element - an element to be added at the rear of the queue
+     * @throws QueueOverflowException if the queue is full
      */
     @Override
     public void enqueue(E element)
@@ -50,6 +52,7 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
     /**
      * take the first element out and updates the rest queue accordingly
      * @return the first element in the queue (the one in the head index)
+     * @throws EmptyQueueException if the queue is empty
      */
     @Override
     public E dequeue ()
@@ -69,10 +72,11 @@ public  class ArrayQueue<E extends Cloneable>  implements Queue<E>, Cloneable, I
     /**
      * returns the first element without taking it out
      * @return the first element in the queue (the one in the head index)
+     * @throws EmptyQueueException if the queue is empty
      */
     @Override
     public E peek()
-    {//to do: if size==0 throws exception
+    {
         if(isEmpty())
         {
             throw new EmptyQueueException("The queue is empty");

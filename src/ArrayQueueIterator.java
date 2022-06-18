@@ -6,6 +6,7 @@ import java.util.Iterator;
  */
 public class ArrayQueueIterator<E extends Cloneable> implements Iterator<E>
 {
+    private static final int STOP_ITERATING = -2;
     private int index;
     private ArrayQueue<E> queue;
 
@@ -25,7 +26,7 @@ public class ArrayQueueIterator<E extends Cloneable> implements Iterator<E>
      */
     @Override
     public boolean hasNext() {
-        if ((index == -2) || (queue.getArray()[index] == null)){
+        if ((index == STOP_ITERATING) || (queue.getArray()[index] == null)){
             return false;
         }
         return true;
@@ -40,7 +41,7 @@ public class ArrayQueueIterator<E extends Cloneable> implements Iterator<E>
         E element = queue.getArray()[index];
         if (index == queue.getTail())
         {
-            index = -2; //in case the rear index has been reached
+            index = STOP_ITERATING; //in case the rear index has been reached
         }
         else{
             index = (index+1)% queue.getMaxSize(); //in case the head index isn't the 0 index
