@@ -1,7 +1,7 @@
 import java.util.Date;
 
 /**
- *
+ * represents objects that their can be iterated on their Tasks
  */
 public interface TaskIterable extends  Iterable <Task>
 {

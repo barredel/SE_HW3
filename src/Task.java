@@ -6,34 +6,25 @@ import java.util.Date;
 public class Task implements Cloneable
 {
     private String description;
-    private Date date;
+    private Date dueDate;
 
     /**
      * class constructor
      * @param description the description of the task
-     * @param date the due date of the task
+     * @param dueDate the due date of the task
      */
-    public Task(String description,Date date)
+    public Task(String description,Date dueDate)
     {
         this.description = description;
-        this.date = date;
+        this.dueDate = dueDate;
     }
 
     /**
      * set the due date of the task
-     * @param date the due date to update on the task
+     * @param dueDate the due date to update the task
      */
-    public void setDueDate(Date date) {
-        this.date = date;
-    }
-
-    /**
-     *
-     * @return the due date of the task
-     */
-    public Date getDate()
-    {
-        return date;
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
     }
 
     /**
@@ -42,12 +33,12 @@ public class Task implements Cloneable
      */
     public Date getDueDate()
     {
-        return this.date;
+        return this.dueDate;
     }
 
     /**
      *
-     * @return string of the description of the task
+     * @return the string of the description of the task
      */
     public String getDescription()
     {
@@ -55,7 +46,7 @@ public class Task implements Cloneable
     }
 
     /**
-     * checks if an object is a task that has the same description and date as this task
+     * checks if an object is a task and if it has the same description and date as this task
      * @param other - any other object
      * @return true if is a task that has the same description and date as this task, false if not
      */
@@ -67,7 +58,7 @@ public class Task implements Cloneable
             return false;
         }
         Task otherTask = (Task)other;
-        if((this.description.equals(otherTask.description))&& (this.date.compareTo(otherTask.date)==0))
+        if((this.description.equals(otherTask.description))&& (this.dueDate.compareTo(otherTask.dueDate)==0))
         {
             return true;
         }
@@ -75,36 +66,35 @@ public class Task implements Cloneable
     }
 
     /**
-     *
      * @return string of the description and the due date (in format DD.MM.YYYY) of the task with "," between them.
      */
     @Override
     public String toString()
     {
         String string = description + ", ";
-        if(date.getDate() <10)
+        if(dueDate.getDate() <10)
         {
-            string = string + "0" + date.getDate();
+            string = string + "0" + dueDate.getDate();
         }
         else
         {
-            string = string + date.getDate();
+            string = string + dueDate.getDate();
         }
-        if(date.getMonth() <9)
+        if(dueDate.getMonth() <9)
         {
-            string = string + ".0" + (date.getMonth()+1);
+            string = string + ".0" + (dueDate.getMonth()+1);
         }
         else
         {
-            string = string + "." + (date.getMonth()+1);
+            string = string + "." + (dueDate.getMonth()+1);
         }
-        string = string + "." + (date.getYear() +1900);
+        string = string + "." + (dueDate.getYear() +1900);
         return string;
     }
 
     /**
      *
-     * @return the hashcode of the description of the task
+     * @return the hashcode based on the hashcode of the description of the task
      */
     @Override
     public int hashCode()
@@ -122,7 +112,7 @@ public class Task implements Cloneable
         try
         {
             Task copy = (Task)super.clone();
-            copy.date = (Date)date.clone();
+            copy.dueDate = (Date)dueDate.clone();
             return copy;
         } catch (Exception e)
         {

@@ -8,24 +8,24 @@ import java.util.Iterator;
 public class ToDoListIterator implements Iterator <Task>
 {
         private ArrayList<Task> tasksSorted;
-        private Date dueDate;
+        private Date scanningDueDate;
         private int index;
 
         /**
          * class constructor
-         * @param tasksSorted arraylist of tasks
-         * @param dueDate
+         * @param tasksSorted arraylist of tasks sorted by date and alphabetically
+         * @param scanningDueDate the last date of tasks to be iterated. if null, iterate all tasks
          */
-        public ToDoListIterator(ArrayList tasksSorted, Date dueDate)
+        public ToDoListIterator(ArrayList tasksSorted, Date scanningDueDate)
         {
                 this.tasksSorted = tasksSorted;
-                this.dueDate = dueDate;
+                this.scanningDueDate = scanningDueDate;
                 this.index = 0;
         }
 
         /**
-         * checks if there are any element left to iterate
-         * @return true is there are more elements, false otherwise
+         * checks if there are any tasks left to iterate
+         * @return true is there are more tasks, false otherwise
          */
         @Override
         public boolean hasNext()
@@ -38,7 +38,7 @@ public class ToDoListIterator implements Iterator <Task>
                 {
                         return false;
                 }
-                if(dueDate!=null && (tasksSorted.get(index).getDate().compareTo(dueDate))>0)
+                if(scanningDueDate!=null && (tasksSorted.get(index).getDueDate().compareTo(scanningDueDate))>0)
                 {
                         return false;
                 }
@@ -46,8 +46,8 @@ public class ToDoListIterator implements Iterator <Task>
         }
 
         /**
-         * returns the next element in the queue and updates the index
-         * @return the next element
+         * returns the next task in the queue and updates the index
+         * @return the next task
          */
         @Override
         public Task next()

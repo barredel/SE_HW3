@@ -14,8 +14,8 @@ public class ToDoList implements TaskIterable , Cloneable
 
     /**
      * class constructor
-     * Initials "tasks" and "tasksSorted" as an arraylists of tasks, one for a
-     * list sorted by the order in which the tasks are entered and one for a list sorted by the due date.
+     * Initials "tasks" and "tasksSorted" as arraylists of tasks, one for a list sorted by the order
+     * in which the tasks were entered and one for a list sorted by the due date and alphabetically
      * also initializes the scanningDueDate as a null
      */
     public ToDoList ()
@@ -26,10 +26,9 @@ public class ToDoList implements TaskIterable , Cloneable
     }
 
     /**
-     * Gets the date used when going through a ToDoList
-     * If the value of the transferred parameter is null, the transition to the tasks will be performed
-     * according to the first type of scan.
-     * otherwise, this date is used as the date given in the second scan type.
+     * sets the date used when going through a ToDoList
+     * If the value of the transferred parameter is null, the iteration will be on all the tasks.
+     * otherwise, the iteration will be on all the tasks until the given date (including).
      * @param scanningDueDate the date used when going through a list
      */
     @Override
@@ -40,7 +39,7 @@ public class ToDoList implements TaskIterable , Cloneable
 
     /**
      * Adds a new task to ToDoList, for tasks simply put the task in the next place in the arraylist
-     * and for tasksSorted put the task in the appropriate place by the due date so that arraylist will be
+     * and for tasksSorted put the task in the appropriate place by the due date so that the arraylist will be
      * sorted in ascending order by the tasks due date
      * @param task a new task to add to the ToDoList
      */
@@ -58,16 +57,16 @@ public class ToDoList implements TaskIterable , Cloneable
             {
                 throw new TaskAlreadyExistsException();
             }
-            if(tasksSorted.get(i).getDate().compareTo(task.getDate()) < 0)
+            if(tasksSorted.get(i).getDueDate().compareTo(task.getDueDate()) < 0)
             {
                 continue;
             }
-            else if(tasksSorted.get(i).getDate().compareTo(task.getDate()) > 0)
+            else if(tasksSorted.get(i).getDueDate().compareTo(task.getDueDate()) > 0)
             {
                 tasksSorted.add(i, task);
                 return;
             }
-            else if(tasksSorted.get(i).getDate().compareTo(task.getDate()) == 0)
+            else if(tasksSorted.get(i).getDueDate().compareTo(task.getDueDate()) == 0)
                 if(tasksSorted.get(i).getDescription().compareTo(task.getDescription()) < 0)
                 {
                     continue;
@@ -81,7 +80,6 @@ public class ToDoList implements TaskIterable , Cloneable
     }
 
     /**
-     *
      * @return a ToDoList iterator accordingly to the scanningDueDate (if null or not)
      */
     public Iterator <Task> iterator()
@@ -92,7 +90,7 @@ public class ToDoList implements TaskIterable , Cloneable
     /**
      * checks if an object is a ToDoList that has the same tasks
      * @param other - any other object
-     * @return true if is a ToDoList that has the same tasks as this ToDOList, false if not
+     * @return true if is a ToDoList that has the same tasks as this ToDoList, false if not
      */
     @Override
     public boolean equals(Object other)
@@ -118,7 +116,6 @@ public class ToDoList implements TaskIterable , Cloneable
     }
 
     /**
-     *
      * @return string of all the tasks in the ToDoList where each task is surrounded by round parentheses and all the
      * tasks are separated by commas. The entire list is surrounded by square brackets
      */
@@ -138,7 +135,6 @@ public class ToDoList implements TaskIterable , Cloneable
     }
 
     /**
-     *
      * @return the hashcode of the first task in the sorted ToDoList
      */
     @Override
@@ -166,7 +162,6 @@ public class ToDoList implements TaskIterable , Cloneable
             if(this.scanningDueDate != null)
             {
                 copy.scanningDueDate = (Date)this.scanningDueDate.clone();
-
             }
             else
             {
