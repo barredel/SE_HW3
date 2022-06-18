@@ -2,12 +2,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
+
+/**
+ * represents a ToDoList
+ */
 public class ToDoList implements TaskIterable , Cloneable
 {
     private ArrayList<Task> tasks;
     private ArrayList<Task> tasksSorted;
     private Date scanningDueDate;
 
+    /**
+     * class constructor
+     * Initials "tasks" and "tasksSorted" as an arraylists of tasks, one for a
+     * list sorted by the order in which the tasks are entered and one for a list sorted by the due date.
+     * also initializes the scanningDueDate as a null
+     */
     public ToDoList ()
     {
         this.tasks = new ArrayList<Task>();
@@ -15,12 +25,25 @@ public class ToDoList implements TaskIterable , Cloneable
         this.scanningDueDate = null;
     }
 
+    /**
+     * Gets the date used when going through a list
+     * chores. If the value of the transferred parameter is null, the transition to the tasks will be performed
+     * according to the first type of scan.
+     * otherwise, this date is used as the date given in the second scan type.
+     * @param scanningDueDate the date used when going through a list
+     */
     @Override
     public void setScanningDueDate(Date scanningDueDate)
     {
         this.scanningDueDate = scanningDueDate;
     }
 
+    /**
+     * Adds a new task to ToDoList, for tasks simply put the task in the next place in the arraylist
+     * and for tasksSorted put the task in the appropriate place by the due date so that arraylist will be
+     * sorted in ascending order by the tasks due date
+     * @param task a new task to add to the ToDoList
+     */
     public void addTask(Task task)
     {
         tasks.add(task);
@@ -56,11 +79,21 @@ public class ToDoList implements TaskIterable , Cloneable
                 }
         }
     }
+
+    /**
+     *
+     * @return a ToDoList iterator accordingly to the scanningDueDate (if null or not)
+     */
     public Iterator <Task> iterator()
     {
         return new ToDoListIterator(this.tasksSorted, this.scanningDueDate);
     }
 
+    /**
+     * checks if an object is a ToDoList that has the same tasks
+     * @param other - any other object
+     * @return true if is a ToDoList that has the same tasks as this ToDOList, false if not
+     */
     @Override
     public boolean equals(Object other)
     {
@@ -84,8 +117,12 @@ public class ToDoList implements TaskIterable , Cloneable
         return true;
     }
 
+    /**
+     *
+     * @return string of all the tasks in the ToDoList where each task is surrounded by round parentheses and all the
+     * tasks are separated by commas. The entire list is surrounded by square brackets
+     */
     @Override
-
     public String toString()
     {
         String string = "[";
@@ -100,7 +137,10 @@ public class ToDoList implements TaskIterable , Cloneable
         return (string + "]");
     }
 
-
+    /**
+     *
+     * @return the hashcode of the first task in the sorted ToDoList
+     */
     @Override
     public int hashCode()
     {
@@ -115,6 +155,10 @@ public class ToDoList implements TaskIterable , Cloneable
     }
 
 
+    /**
+     * deep clones the ToDoList
+     * @return a clone of the ToDoList
+     */
     @Override
     public ToDoList clone() {
         try {

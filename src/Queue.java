@@ -13,4 +13,3 @@ public interface Queue<E extends Cloneable> extends Iterable<E>, Cloneable
 }
 
 
-//JJ
